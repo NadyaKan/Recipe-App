@@ -1,67 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense } from "react";
 import "./App.css";
-import Recipe from "./Recipe";
-//import Search from "./Search";
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import SearchPage from "./containers/SearchPage/SearchPage";
 
-const App = () => {
-  //////
-  const APP_ID = "cc720f00";
-  const APP_KEY = "e2fc9c5cb39d3ee9c962257da1ac8be4";
-  const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("chicken");
+const App = props => {
+  const Recipes = React.lazy(() => {
+    return import("./containers/RecipesPage/RecipesPage");
+  });
 
-  useEffect(() => {
-    getRecipes();
-  }, [query]);
-
-  const getRecipes = async () => {
-    // const response = await fetch(
-    //   `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    // );
-    const data = await response.json();
-    console.log(data.hits);
-    setRecipes(data.hits);
-  };
-
-  const updateSearch = e => {
-    setSearch(e.target.value);
-  };
-
-  const getSearch = e => {
-    e.preventDefault();
-    setQuery(search);
-    setSearch("");
-  };
-  ///////////
+  const routes = (
+    <Switch>
+      <Route path="/" exact component={SearchPage} />
+      <Route path="/recipes" component={Recipes} />
+      {/* <Route path="/bookmarks" component={Bookmarks} /> */}
+      <Redirect to="/" />
+    </Switch>
+  );
 
   return (
-    <div className="App">
-      <form onSubmit={getSearch} className="search-form">
-        <input
-          className="search-bar"
-          type="text"
-          value={search}
-          onChange={updateSearch}
-        />
-        <button className="search-button" type="submit">
-          Search
-        </button>
-      </form>
-
-      <div className="recipes">
-        {recipes.map((recipe, index) => (
-          <Recipe
-            key={index}
-            title={recipe.recipe.label}
-            dietLabels={recipe.recipe.dietLabels}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
-          />
-        ))}
-      </div>
+    <div>
+      <Suspense fallback={<p>Loading...</p>}>{routes}</Suspense>
     </div>
   );
 };
 
-export default App;
+export default withRouter(App);
