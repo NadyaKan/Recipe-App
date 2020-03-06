@@ -17,10 +17,23 @@ export const setRecipes = foundRecipes => {
   };
 };
 
+export const bookmark = bookmarkedRecipe => {
+  return {
+    type: actionTypes.BOOKMARK,
+    payload: bookmarkedRecipe
+  };
+};
+
+export const unbookmark = bookmarkedRecipeId => {
+  return {
+    type: actionTypes.UNBOOKMARK,
+    payload: bookmarkedRecipeId
+  };
+};
+
 export const fetchRecipes = query => {
   return dispatch => {
     dispatch(searchingRecipes(true));
-    console.log(query);
 
     return fetch(
       `https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}`
@@ -30,9 +43,10 @@ export const fetchRecipes = query => {
         if (json.error) {
           throw json.error;
         }
-        console.log(json);
 
-        const foundRecipes = json.hits;
+        const foundRecipes = json.hits.map(recipe => {
+          return { ...recipe, isBookmarked: false };
+        });
         dispatch(setRecipes(foundRecipes));
         dispatch(searchingRecipes(false));
         return foundRecipes;
