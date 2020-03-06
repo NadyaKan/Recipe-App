@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "../../recipe.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { unbookmark } from "../../store/actions";
+import { bookmark } from "../../store/actions";
 
-const Recipe = ({ title, dietLabels, image, ingredients }) => {
+const Recipe = ({
+  title,
+  dietLabels,
+  image,
+  ingredients,
+  url,
+  isBookmarked
+}) => {
+  const dispatch = useDispatch();
+
+  const clickHandler = e => {
+    isBookmarked
+      ? dispatch(unbookmark(url))
+      : dispatch(
+          bookmark({
+            title,
+            dietLabels,
+            image,
+            ingredients,
+            url
+          })
+        );
+  };
+
   return (
     <div className={style.recipe}>
       <h1>{title}</h1>
@@ -15,6 +41,10 @@ const Recipe = ({ title, dietLabels, image, ingredients }) => {
       {dietLabels.map((dietLabel, index) => (
         <p key={index}>*{dietLabel}</p>
       ))}
+
+      <button onClick={clickHandler}>
+        {isBookmarked ? "Unbookmark" : "Bookmark"}
+      </button>
     </div>
   );
 };
