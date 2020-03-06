@@ -12,7 +12,6 @@ const Search = props => {
   const submitHandler = e => {
     e.preventDefault();
     const query = e.target.elements[0].value;
-    console.log(e.target.elements[0].value);
 
     boundFetchRecipes(query);
     history.push("/recipes");

@@ -1,2 +1,7 @@
-export { delBookmark, addBookmark } from "./bookmarks";
-export { fetchRecipes, setRecipes, searchingRecipes } from "./recipes";
+export {
+  fetchRecipes,
+  setRecipes,
+  searchingRecipes,
+  unbookmark,
+  bookmark
+} from "./recipes";

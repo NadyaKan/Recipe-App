@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunkMiddleware from "redux-thunk";
-import bookmarkReducer from "./reducers/bookmarks";
 import recipeReducer from "./reducers/recipes";
 
 const bindMiddleware = middleware => {
@@ -13,8 +12,7 @@ const bindMiddleware = middleware => {
 
 const store = createStore(
   combineReducers({
-    recipes: recipeReducer,
-    bookmarks: bookmarkReducer
+    recipes: recipeReducer
   }),
   bindMiddleware([thunkMiddleware])
 );
