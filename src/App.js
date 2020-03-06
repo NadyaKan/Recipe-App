@@ -8,11 +8,15 @@ const App = props => {
     return import("./containers/RecipesPage/RecipesPage");
   });
 
+  const Bookmarks = React.lazy(() => {
+    return import("./containers/BookmarksPage/BookmarksPage");
+  });
+
   const routes = (
     <Switch>
       <Route path="/" exact component={SearchPage} />
       <Route path="/recipes" component={Recipes} />
-      {/* <Route path="/bookmarks" component={Bookmarks} /> */}
+      <Route path="/bookmarks" component={Bookmarks} />
       <Redirect to="/" />
     </Switch>
   );
