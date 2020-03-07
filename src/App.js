@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import "./App.css";
+import "./App.scss";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import SearchPage from "./containers/SearchPage/SearchPage";
 
