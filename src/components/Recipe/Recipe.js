@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import style from "../../recipe.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import style from "../../sassModules/recipe.module.scss";
+import { useDispatch } from "react-redux";
 import { unbookmark } from "../../store/actions";
 import { bookmark } from "../../store/actions";
 

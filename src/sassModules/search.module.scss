@@ -1,0 +1,20 @@
+.search_form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+.search_bar {
+    width: 50%;
+    border: none;
+    padding: 10px;
+}
+
+.search_button {
+    background: rgba(157, 149, 172, 0.8);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+}

@@ -3,6 +3,7 @@ import { fetchRecipes } from "../../store/actions/recipes";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import style from "../../sassModules/search.module.scss";
 
 const Search = props => {
   let history = useHistory();
@@ -18,9 +19,9 @@ const Search = props => {
   };
 
   return (
-    <form onSubmit={submitHandler} className="search-form">
-      <input className="search-bar" type="text" />
-      <button className="search-button" type="submit">
+    <form onSubmit={submitHandler} className={style.search_form}>
+      <input className={style.search_bar} type="text" />
+      <button className={style.search_button} type="submit">
         Search
       </button>
     </form>
