@@ -20,7 +20,14 @@ const Search = props => {
 
   return (
     <form onSubmit={submitHandler} className={style.search_form}>
-      <input className={style.search_bar} type="text" />
+      <svg className={style.iconSearch}>
+        <use xlinkHref="SVG/sprite.svg#search" />
+      </svg>
+      <input
+        className={style.search_bar}
+        type="text"
+        placeholder="Search for recipe..."
+      />
       <button className={style.search_button} type="submit">
         Search
       </button>
