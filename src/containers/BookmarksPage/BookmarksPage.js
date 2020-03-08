@@ -3,6 +3,7 @@ import React from "react";
 import Recipe from "../../components/Recipe/Recipe";
 import { getBookmarks } from "../../store/reducers/recipes";
 import Search from "../../components/Search/Search";
+import style from "../../sassModules/bookmarksPage.module.scss";
 
 const BookmarksPage = () => {
   const bookmarks = useSelector(state => getBookmarks(state));
@@ -10,7 +11,7 @@ const BookmarksPage = () => {
   return (
     <div>
       <Search />
-      <div className="recipes">
+      <div className={style.recipes}>
         {bookmarks.map((bookmark, index) => (
           <Recipe
             key={index}

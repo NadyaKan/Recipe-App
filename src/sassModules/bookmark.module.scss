@@ -1,0 +1,26 @@
+.lnk {
+    color: white;
+    float: right;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    .iconBookmark {
+        height: 3rem;
+        width: 3rem;
+        fill: goldenrod;
+        padding: 1rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+.iconBookmark:hover {
+    transform: rotate(-45deg);
+    fill: rgb(212, 152, 0);
+}
+
+.lnk:link,
+.lnk:visited {
+    text-decoration: none;
+    transition: all .2s;
+}

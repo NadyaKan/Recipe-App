@@ -1,0 +1,6 @@
+.recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 8px;
+}
