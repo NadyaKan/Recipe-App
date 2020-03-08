@@ -1,18 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-
+import style from "../../sassModules/recipePage.module.scss";
 import Recipe from "../../components/Recipe/Recipe";
 import Search from "../../components/Search/Search";
+import Bookmark from "../../components/Bookmark/Bookmark";
 
 const RecipesPage = () => {
   const recipes = useSelector(state => state.recipes.recipes);
 
   return (
-    <div>
-      <Link to="/bookmarks">My Bookmarks</Link>
+    <div className={style.page}>
+      <Bookmark />
       <Search />
-      <div className="recipes">
+      <div className={style.recipes}>
         {recipes.map((recipe, index) => (
           <Recipe
             key={index}
